@@ -29,11 +29,11 @@ protobufs : $(PROTO_OBJ)
 
 all:    $(OBJDIR)/libprotobuf_defs.so
 $(OBJDIR)/libprotobuf_defs.so: $(PROTO_OBJ) $(PROTOBUFDEF_OBJ)  $(OBJDIR)/libcipher.so
-	$(CXX) -shared -o $@ $(PROTO_OBJ) $(PROTOBUFDEF_OBJ) $(SHAIFHEPATH)/fhe.a $(LDFLAGS) -lprotobuf -lcipher -lntl -lgf2x
+	$(CXX) -shared -o $@ $(PROTO_OBJ) $(PROTOBUFDEF_OBJ) $(SHAIFHEPATH)/fhe.a $(LDFLAGS) -lprotobuf -lcipher -lntl 
 
 all:	$(OBJDIR)/protobuf/test_protobuf
 $(OBJDIR)/protobuf/test_protobuf: $(OBJDIR)/protobuf/test_protobuf.o $(OBJDIR)/libprotobuf_defs.so $(OBJDIR)/libcipher.so
-	$(CXX) $< -o $@ $(SHAIFHEPATH)/fhe.a $(LDFLAGS) -lprotobuf_defs -lcipher -L$(NTLLIBPATH) -lntl -lgf2x 
+	$(CXX) $< -o $@ $(SHAIFHEPATH)/fhe.a $(LDFLAGS) -lprotobuf_defs -lcipher -L$(NTLLIBPATH) -lntl 
 
 
 # vim: set noexpandtab:
